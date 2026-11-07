@@ -12,7 +12,7 @@ export default function FetchWeatherData({ location }) {
                 setError(null);
 
                 const response = await fetch(
-                    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}`,
+                    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${import.meta.env.VITE_WEATHER_API_KEY}`,
                 );
 
                 if (!response.ok) {
@@ -78,6 +78,14 @@ export default function FetchWeatherData({ location }) {
                 <p>
                     <strong>Humidity:</strong> {data.currentConditions.humidity}
                     %
+                </p>
+                <p>
+                    <strong>Windspeed:</strong>{" "}
+                    {data.currentConditions.windspeed}
+                </p>
+                <p>
+                    <strong>Chance of Rain:</strong>{" "}
+                    {data.currentConditions.precipprob}
                 </p>
             </div>
 

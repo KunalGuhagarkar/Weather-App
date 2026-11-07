@@ -106,7 +106,7 @@ Weather-App/
 
 ### Remaining project requirements
 
-- [ ] Show wind speed and chance of rain in the current conditions
+- [x] Show wind speed and chance of rain in the current conditions
 - [ ] Show the previous and next 24 hours (hourly view)
 - [ ] Add a refresh button to reload the weather outlook
 
@@ -115,22 +115,9 @@ Weather-App/
 - [ ] Default to the user's current location (browser geolocation)
 - [ ] Add loading animations (for example, with Framer Motion)
 
-### Nice to have
-
-- [ ] Toggle between Celsius and Fahrenheit
-- [ ] Search on pressing Enter, not only the Submit button
-- [ ] Friendlier error messages (for example, "Location not found")
-- [ ] Weather icons for each condition
-- [ ] Cache recent searches to reduce API calls
-- [ ] Remember the last searched location
-- [ ] Make the layout fully responsive
-- [ ] Add tests and deploy the app (for example, Vercel or Netlify)
-
 ### Code cleanup
 
-- [ ] Move the API key into an environment variable and add `.env` to `.gitignore`
-- [ ] Rename `FetchWeatherData` to something like `WeatherCard` and split data fetching into a custom hook
-- [ ] Remove the leftover `console.log` calls
+- [x] Move the API key into an environment variable and add `.env` to `.gitignore`
 - [ ] Encode the location in the request URL (`encodeURIComponent`)
 
 ## Acknowledgements

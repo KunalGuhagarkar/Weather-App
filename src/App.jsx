@@ -7,6 +7,8 @@ function App() {
     const [location, setLocation] = useState("");
     const [showWeather, setShowWeather] = useState("");
 
+    console.log(navigator.geolocation);
+
     function locationClickHandler() {
         setShowWeather(location);
     }

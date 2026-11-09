@@ -107,18 +107,18 @@ Weather-App/
 ### Remaining project requirements
 
 - [x] Show wind speed and chance of rain in the current conditions
-- [ ] Show the previous and next 24 hours (hourly view)
-- [ ] Add a refresh button to reload the weather outlook
+- [x] Show the previous and next 24 hours (hourly view)
+- [x] Add a refresh button to reload the weather outlook
 
 ### Stretch goals
 
-- [ ] Default to the user's current location (browser geolocation)
-- [ ] Add loading animations (for example, with Framer Motion)
+- [x] Default to the user's current location (browser geolocation)
+- [x] Add loading animations (for example, with Framer Motion) 
 
 ### Code cleanup
 
 - [x] Move the API key into an environment variable and add `.env` to `.gitignore`
-- [ ] Encode the location in the request URL (`encodeURIComponent`)
+- [x] Encode the location in the request URL (`encodeURIComponent`)
 
 ## Acknowledgements
 

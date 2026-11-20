@@ -10,7 +10,7 @@ export default function WeatherCard({ location }) {
         const fetchWeather = async () => {
             try {
                 const response = await fetch(
-                    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/yesterday/tomorrow?unitGroup=us&key=${import.meta.env.VITE_WEATHER_API_KEY}&contentType=json`,
+                    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/yesterday/tomorrow?unitGroup=metric&key=${import.meta.env.VITE_WEATHER_API_KEY}&contentType=json`,
                 );
 
                 const data = await response.json();
@@ -44,7 +44,7 @@ export default function WeatherCard({ location }) {
                             {dayLabels[index]}
                         </h3>
                         <p className="weather-day__date">{day.datetime}</p>
-                        <p className="weather-day__temp">{day.temp}°F</p>
+                        <p className="weather-day__temp">{day.temp}°C</p>
                         <div className="weather-day__row">
                             <span>Windspeed</span>
                             <span>{day.windspeed}</span>

@@ -1,33 +1,33 @@
 # Weather App
 
-A React weather app that lets you search for any location and view its current conditions and a 7-day forecast. Built as a solution to the [roadmap.sh Weather App project](https://roadmap.sh/projects/weather-app).
+A small React app that shows the weather for any city you search for. It displays a three-day view (yesterday, today and tomorrow) with the temperature, wind speed, chance of rain and general conditions for each day.
 
-> **Status:** 🚧 Work in progress. The core search and forecast are working; the remaining features are listed under [Future Improvements](#future-improvements).
+Weather data comes from the [Visual Crossing Timeline Weather API](https://www.visualcrossing.com/weather-api).
+
+This project is a solution to the [roadmap.sh Weather App project](https://roadmap.sh/projects/weather-app).
 
 ## Features
 
-- Search for any city or location using the input field
-- Current conditions: temperature, "feels like" temperature, general conditions (Sunny, Cloudy, Rainy, etc.) and humidity
-- 7-day forecast with the day's conditions and high/low temperatures
-- Loading and error states while fetching data
-
-Temperatures are shown in °F (the Visual Crossing default).
+- Search for a city or location by typing it in and clicking **Submit** or pressing **Enter**
+- Starts with an approximate location guessed from your browser's time zone
+- Three-day view: yesterday, today (highlighted) and tomorrow
+- For each day: date, average temperature (°F), wind speed, rain chance and conditions
+- Shows a loading message while data is being fetched
 
 ## Tech Stack
 
 - [React](https://react.dev/) 19
 - [Vite](https://vite.dev/) 8
-- JavaScript (JSX)
-- CSS
+- JavaScript (JSX) and plain CSS
 - ESLint
-- [Visual Crossing Weather API](https://www.visualcrossing.com/weather-api)
+- [Framer Motion](https://motion.dev/) (installed as a dependency)
 
 ## Getting Started
 
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) and npm
-- A free Visual Crossing API key ([sign up here](https://www.visualcrossing.com/weather-api))
+- A free API key from [Visual Crossing](https://www.visualcrossing.com/weather-api)
 
 ### Installation
 
@@ -56,7 +56,9 @@ Temperatures are shown in °F (the Visual Crossing default).
    npm run dev
    ```
 
-5. Open the local URL shown in the terminal (usually `http://localhost:5173`).
+5. Open the local URL printed in the terminal (usually `http://localhost:5173`).
+
+The `.env` file is already listed in `.gitignore`, so your key will not be committed.
 
 ### Available Scripts
 
@@ -69,59 +71,48 @@ Temperatures are shown in °F (the Visual Crossing default).
 
 ## Usage
 
-1. Type a city or location into the search box (for example, `Mumbai` or `London, UK`).
-2. Click **Submit**.
-3. View the current conditions and the 7-day forecast for that location.
+1. Open the app. It loads weather for a location guessed from your time zone (for example, `Kolkata` for `Asia/Kolkata`).
+2. Type a city into the search box, such as `Mumbai` or `London`.
+3. Click **Submit** or press **Enter**.
+4. Read the yesterday, today and tomorrow cards.
 
-## API
+## How It Works
 
-Weather data comes from the Visual Crossing Timeline Weather API:
+`App.jsx` holds the search input and the current location in state. When a location is set, it renders `WeatherCard`, which requests the data from Visual Crossing whenever the location changes:
 
 ```
-https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}?key=YOUR_API_KEY
+https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}/yesterday/tomorrow?unitGroup=us&key=YOUR_API_KEY&contentType=json
 ```
 
-The API key is read from the `VITE_WEATHER_API_KEY` environment variable. Never commit your `.env` file; make sure it is listed in `.gitignore`.
+The `unitGroup=us` parameter means temperatures are in °F and wind speed is in mph.
 
 ## Project Structure
 
 ```
 Weather-App/
 ├── public/
+│   ├── favicon.svg
+│   └── icons.svg
 ├── src/
 │   ├── components/
-│   │   └── FetchWeatherData.jsx   # Fetches and displays weather data
-│   ├── App.jsx                    # Search bar and app state
-│   ├── App.css                    # App and weather card styles
-│   ├── index.css
-│   └── main.jsx                   # React entry point
+│   │   └── WeatherCard.jsx          # Fetches data and renders the three day cards
+│   ├── styles/
+│   │   └── style-weather-card.css   # Styles for the weather card
+│   ├── App.jsx                      # Search bar and location state
+│   ├── App.css                      # App layout and search styles
+│   ├── index.css                    # Global styles
+│   └── main.jsx                     # React entry point
 ├── eslint.config.js
 ├── index.html
 ├── package.json
-├── vite.config.js
-└── README.md
+└── vite.config.js
 ```
 
-## Future Improvements
+## Author
 
-### Remaining project requirements
-
-- [x] Show wind speed and chance of rain in the current conditions
-- [x] Show the previous and next 24 hours (hourly view)
-- [x] Add a refresh button to reload the weather outlook
-
-### Stretch goals
-
-- [x] Default to the user's current location (browser geolocation)
-- [x] Add loading animations (for example, with Framer Motion) 
-
-### Code cleanup
-
-- [x] Move the API key into an environment variable and add `.env` to `.gitignore`
-- [x] Encode the location in the request URL (`encodeURIComponent`)
+Kunal Guhagarkar ([@KunalGuhagarkar](https://github.com/KunalGuhagarkar))
 
 ## Acknowledgements
 
 - Project idea from [roadmap.sh](https://roadmap.sh/projects/weather-app)
-- Weather data from [Visual Crossing](https://www.visualcrossing.com/)
-
+- Weather data provided by [Visual Crossing](https://www.visualcrossing.com/)

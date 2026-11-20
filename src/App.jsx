@@ -3,9 +3,12 @@ import "./App.css";
 
 import WeatherCard from "./components/WeatherCard";
 
+const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+const approxCity = timeZone.split("/")[1]?.replace(/_/g, " ");
+
 function App() {
     const [temp, setTemp] = useState("");
-    const [location, setLocation] = useState("");
+    const [location, setLocation] = useState(approxCity);
 
     function submitLocationClickHandler() {
         setLocation(temp);
